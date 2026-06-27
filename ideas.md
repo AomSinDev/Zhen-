@@ -1,78 +1,189 @@
-# Zhenzhen Channel - Design Brainstorm
+@import "tailwindcss";
+@import "tw-animate-css";
 
-## Three Stylistic Approaches
+@custom-variant dark (&:is(.dark *));
 
-### 1. Ethereal Minimalist
-**Theme Name:** Ethereal Minimalist  
-**Very Brief Intro:** Clean, serene aesthetic inspired by anime's soft color palettes. Emphasizes whitespace, gentle gradients, and delicate typography to create a calming, approachable presence.  
-**Probability:** 0.08
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
 
-### 2. Vibrant Digital Native
-**Theme Name:** Vibrant Digital Native  
-**Very Brief Intro:** Bold, energetic design with saturated colors and playful animations. Reflects modern content creator culture with dynamic layouts and contemporary typography.  
-**Probability:** 0.07
+:root {
+  --primary: #A8D8E8;
+  --primary-foreground: #FFFFFF;
+  --sidebar-primary: #A8D8E8;
+  --sidebar-primary-foreground: #FFFFFF;
+  --chart-1: #A8D8E8;
+  --chart-2: #D4A5A5;
+  --chart-3: #E8F4F8;
+  --chart-4: #2C3E50;
+  --chart-5: #8B7D7D;
+  --radius: 0.65rem;
+  --background: #FFFFFF;
+  --foreground: #2C3E50;
+  --card: #F8FBFC;
+  --card-foreground: #2C3E50;
+  --popover: #FFFFFF;
+  --popover-foreground: #2C3E50;
+  --secondary: #D4A5A5;
+  --secondary-foreground: #2C3E50;
+  --muted: #E8F4F8;
+  --muted-foreground: #8B7D7D;
+  --accent: #A8D8E8;
+  --accent-foreground: #FFFFFF;
+  --destructive: #E74C3C;
+  --destructive-foreground: #FFFFFF;
+  --border: #E8F4F8;
+  --input: #F8FBFC;
+  --ring: #A8D8E8;
+  --sidebar: #FFFFFF;
+  --sidebar-foreground: #2C3E50;
+  --sidebar-accent: #A8D8E8;
+  --sidebar-accent-foreground: #FFFFFF;
+  --sidebar-border: #E8F4F8;
+  --sidebar-ring: #A8D8E8;
+}
 
-### 3. Sophisticated Anime Showcase (SELECTED)
-**Theme Name:** Sophisticated Anime Showcase  
-**Very Brief Intro:** Premium aesthetic celebrating anime character design. Features the character portrait as the hero, with refined typography, subtle depth, and elegant transitions that honor the artwork.  
-**Probability:** 0.05
+.dark {
+  --primary: var(--color-blue-700);
+  --primary-foreground: var(--color-blue-50);
+  --sidebar-primary: var(--color-blue-500);
+  --sidebar-primary-foreground: var(--color-blue-50);
+  --background: oklch(0.141 0.005 285.823);
+  --foreground: oklch(0.85 0.005 65);
+  --card: oklch(0.21 0.006 285.885);
+  --card-foreground: oklch(0.85 0.005 65);
+  --popover: oklch(0.21 0.006 285.885);
+  --popover-foreground: oklch(0.85 0.005 65);
+  --secondary: oklch(0.24 0.006 286.033);
+  --secondary-foreground: oklch(0.7 0.005 65);
+  --muted: oklch(0.274 0.006 286.033);
+  --muted-foreground: oklch(0.705 0.015 286.067);
+  --accent: oklch(0.274 0.006 286.033);
+  --accent-foreground:  oklch(0.92 0.005 65);
+  --destructive: oklch(0.704 0.191 22.216);
+  --destructive-foreground: oklch(0.985 0 0);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.488 0.243 264.376);
+  --chart-1: var(--color-blue-300);
+  --chart-2: var(--color-blue-500);
+  --chart-3: var(--color-blue-600);
+  --chart-4: var(--color-blue-700);
+  --chart-5: var(--color-blue-800);
+  --sidebar: oklch(0.21 0.006 285.885);
+  --sidebar-foreground: oklch(0.85 0.005 65);
+  --sidebar-accent: oklch(0.274 0.006 286.033);
+  --sidebar-accent-foreground:  oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.488 0.243 264.376);
+}
 
----
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground font-sans;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+  }
+  .font-display {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+  }
+  .font-heading {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+  }
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]),
+  [type="button"]:not(:disabled),
+  [type="submit"]:not(:disabled),
+  [type="reset"]:not(:disabled),
+  a[href],
+  select:not(:disabled),
+  input[type="checkbox"]:not(:disabled),
+  input[type="radio"]:not(:disabled) {
+    @apply cursor-pointer;
+  }
+}
 
-## Chosen Design Philosophy: Sophisticated Anime Showcase
+@layer components {
+  /**
+   * Custom container utility that centers content and adds responsive padding.
+   *
+   * This overrides Tailwind's default container behavior to:
+   * - Auto-center content (mx-auto)
+   * - Add responsive horizontal padding
+   * - Set max-width for large screens
+   *
+   * Usage: <div className="container">...</div>
+   *
+   * For custom widths, use max-w-* utilities directly:
+   * <div className="max-w-6xl mx-auto px-4">...</div>
+   */
+  .container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem; /* 16px - mobile padding */
+    padding-right: 1rem;
+  }
 
-### Design Movement
-**Aesthetic:** Contemporary anime character showcase meets premium personal branding. Draws inspiration from Japanese design principles (negative space, balance, harmony) combined with modern web aesthetics.
+  .flex {
+    min-height: 0;
+    min-width: 0;
+  }
 
-### Core Principles
-1. **Character-Centric:** The Zhenzhen character artwork is the visual anchor—everything else supports and frames it
-2. **Refined Elegance:** Premium typography, subtle shadows, and carefully considered spacing create sophistication without clutter
-3. **Seamless Social Integration:** Social links feel like natural extensions, not afterthoughts—integrated with intentional visual hierarchy
-4. **Delicate Motion:** Animations are understated and purposeful, enhancing rather than distracting
+  @media (min-width: 640px) {
+    .container {
+      padding-left: 1.5rem; /* 24px - tablet padding */
+      padding-right: 1.5rem;
+    }
+  }
 
-### Color Philosophy
-- **Primary Palette:** Soft ice blue (#E8F4F8) as the dominant background, echoing the character's cool tones
-- **Accent Colors:** Dusty rose/mauve (#D4A5A5) for secondary elements, creating warmth against cool blues
-- **Typography Colors:** Deep charcoal (#2C3E50) for primary text, maintaining readability and sophistication
-- **Reasoning:** The palette is inspired by the character's appearance—cool blues and soft pinks create visual harmony with the artwork while maintaining a premium, gallery-like feel
-
-### Layout Paradigm
-**Asymmetric Hero Layout:** The character portrait occupies the right side of the hero section (60% width), with the name, title, and social links positioned on the left (40% width). This creates visual tension and draws the eye naturally through the composition. Below the hero, a subtle divider transitions to a secondary section featuring social media links in an elegant grid.
-
-### Signature Elements
-1. **Soft Glow Effect:** Subtle radial gradient behind the character image, creating depth and emphasis
-2. **Animated Social Icons:** Icons gently scale and change color on hover, with smooth transitions
-3. **Elegant Divider:** Custom SVG wave divider between sections, using the accent color
-
-### Interaction Philosophy
-Interactions should feel natural and responsive. Hover states provide visual feedback without overwhelming the user. Social links respond with gentle color shifts and scale animations, inviting engagement without aggression.
-
-### Animation
-- **Entrance Animations:** Elements fade in and slide up slightly on page load (300ms ease-out)
-- **Hover Effects:** Social icons scale to 1.1 and shift to the accent color (200ms ease-out)
-- **Smooth Transitions:** All color and transform changes use 200-250ms transitions for fluidity
-- **Respect Preferences:** All animations respect `prefers-reduced-motion` media query
-
-### Typography System
-- **Display Font:** Playfair Display (serif) for the name—elegant, distinctive, and memorable
-- **Heading Font:** Poppins (sans-serif) for secondary headings—modern and readable
-- **Body Font:** Inter (sans-serif) for descriptions and labels—clean and professional
-- **Hierarchy:** Large, bold display for the name; medium Poppins for title; smaller Inter for descriptions
-
-### Brand Essence
-**One-Line Positioning:** Zhenzhen Channel is a premium anime content creator bringing character, charm, and creativity to digital platforms.
-
-**Personality Adjectives:** Elegant, Approachable, Creative
-
-### Brand Voice
-Headlines and CTAs should feel welcoming and genuine, never generic. Microcopy should reflect the creator's personality—warm, inviting, and authentic.
-
-**Example Lines:**
-- "Welcome to Zhenzhen's corner of the internet"
-- "Follow along for anime magic and creative adventures"
-
-### Wordmark & Logo
-A minimalist geometric mark combining the character's distinctive features (the two-toned hair and serene expression) into a single, recognizable symbol. The mark should work at small sizes (favicon) and large sizes (header).
-
-### Signature Brand Color
-**Signature Blue:** #A8D8E8 (soft sky blue) — unmistakably tied to the character's cool aesthetic and instantly recognizable as Zhenzhen's brand color.
+  @media (min-width: 1024px) {
+    .container {
+      padding-left: 2rem; /* 32px - desktop padding */
+      padding-right: 2rem;
+      max-width: 1280px; /* Standard content width */
+    }
+  }
+}
